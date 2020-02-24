@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Add A Dog | Puppy Love</title>
+    {% load static %}
+    <link
+      href="https://fonts.googleapis.com/css?family=Kristi|Miss+Fajardose|Reenie+Beanie&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/add_dog.css' %}" />
+  </head>
+  <body>
+    <div id="form_panel">
+      <img id="logo" src="{% static 'img/logo_small.png' %}" />
+      <form action="/process_dog" method="POST" class="form-group">
+        <h3>Add your dog.</h3>
+        <div>
+          <input
+            type="text"
+            name="dog_name"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="dog_name"><span>Name</span></label>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="dog_age"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="dog_age"><span>Age</span></label>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="dog_breed"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="dog_breed"><span>Breed</span></label>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="text"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="city"><span>City</span></label>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="text"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="state"><span>State</span></label>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="text"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="zip"><span>Zip Code</span></label>
+        </div>
+        <div>
+          <textarea
+            type="text"
+            name="dog_desc"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          ></textarea>
+          <label for="dog_desc"><span>Tell us more about your dog</span></label>
+        </div>
+        <button class="btn btn-warning">Add dog</button>
+        <button class="btn btn-outline-warning">Skip</button>
+      </form>
+      <p>
+        Already have an account?
+        <a href="/login" class="links">Log in.</a>
+      </p>
+    </div>
+  </body>
+</html>

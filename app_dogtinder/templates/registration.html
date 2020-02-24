@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Register | Puppy Love</title>
+    {% load static %}
+    <link
+      href="https://fonts.googleapis.com/css?family=Kristi|Miss+Fajardose|Reenie+Beanie&display=swap"
+      rel="stylesheet"
+    />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+    <link rel="stylesheet" href="{% static 'css/registration_style.css' %}" />
+  </head>
+  <body>
+    <div id="form_panel">
+      <img id="logo" src="{% static 'img/logo_small.png' %}" />
+      <form action="/process_registration" method="POST" class="form-group">
+        <div>
+          <input
+            type="text"
+            name="first_name"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="first_name"><span>First Name</span></label>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="last_name"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="last_name"><span>Last Name</span></label>
+        </div>
+        <div>
+          <input
+            type="text"
+            name="username"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="username"><span>Username</span></label>
+        </div>
+        <div>
+          <input
+            type="email"
+            name="email"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="email"><span>Email</span></label>
+        </div>
+        <div>
+          <input
+            type="password"
+            name="password"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="password"><span>Password</span></label>
+        </div>
+        <div>
+          <input
+            type="password"
+            name="confirm_pw"
+            class="question"
+            id="nme"
+            required
+            autocomplete="off"
+          />
+          <label for="password"><span>Confirm Password</span></label>
+        </div>
+        <button class="btn btn-warning">Register</button>
+      </form>
+      <p>
+        Already have an account?
+        <a href="/login" class="links">Log in.</a>
+      </p>
+    </div>
+  </body>
+</html>
