@@ -6,7 +6,7 @@
     <title>Dashboard | Puppy Love</title>
     {% load static %}
     <link rel="icon" href="{% static 'img/browser-icon.png' %}" />
-    <link rel="stylesheet" href="{% static 'css/dashboard_style.css' %}" />
+    <link rel="stylesheet" href="{% static 'css/more_dog.css' %}" />
     <link
       rel="stylesheet"
       href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
@@ -90,46 +90,115 @@
       <!--RATE START-->
       <div id="main">
         <div id="banner">
-          <h1 id="rate_title">R A T E T H I S D O G</h1>
+          <h1 id="rate_title">ADD A DOG</h1>
           <h6 id="subtitle">
-            WE ONLY RATE DOGS OVER 10 BECAUSE THEY'RE ALL GOOD DOGS
+            THE MORE DOGS, THE BETTER
           </h6>
         </div>
-        <!-- <h3>RATE DOGS</h3> -->
-        <div id="rating_panel">
-          <div id="pic_panel">
-            <img src="{% static 'img/lilly.jpg'%}" class="dog_pic" />
-          </div>
-          <div id="desc">
+
+        <!--ADD DOG-->
+        <div id="form_panel">
+          <form action="/process_dog" method="POST">
             <div>
-              <h3>Lilly, 6</h3>
-              <p>Corona, CA</p>
-              <p>
-                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
-                totam eum ipsum voluptates repellat consequatur delectus unde
-                provident quaerat, dolore minus natus, quasi inventore quo
-                perspiciatis, facilis nisi consectetur officiis!
-              </p>
-            </div>
-            <form>
-              <div id="value" class="value" href="/save_rating"></div>
-              <!-- <label for="formControlRange">Rate this good dog</label> -->
               <input
-                type="range"
-                min="11"
-                max="15"
-                step="1"
-                value="11"
-                class="form-control-range"
-                id="myRange"
+                type="text"
+                name="dog_name"
+                class="question"
+                id="nme"
+                required
+                autocomplete="off"
               />
-              <button id="save" class="btn btn-warning">Save Rating</button>
-            </form>
-          </div>
-          <a href="#" id="next">></a>
+              <label for="dog_name"><span>Name</span></label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="dog_age"
+                class="question"
+                id="nme"
+                required
+                autocomplete="off"
+              />
+              <label for="dog_age"><span>Age</span></label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="dog_breed"
+                class="question"
+                id="nme"
+                required
+                autocomplete="off"
+              />
+              <label for="dog_breed"><span>Breed</span></label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="text"
+                class="question"
+                id="nme"
+                required
+                autocomplete="off"
+              />
+              <label for="city"><span>City</span></label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="text"
+                class="question"
+                id="nme"
+                required
+                autocomplete="off"
+              />
+              <label for="state"><span>State</span></label>
+            </div>
+            <div>
+              <input
+                type="text"
+                name="text"
+                class="question"
+                id="nme"
+                required
+                autocomplete="off"
+              />
+              <label for="zip"><span>Zip Code</span></label>
+            </div>
+            <div>
+              <textarea
+                type="text"
+                name="dog_desc"
+                class="question"
+                id="nme"
+                required
+                autocomplete="off"
+              ></textarea>
+              <label for="dog_desc"
+                ><span>Tell us more about your dog</span></label
+              >
+              <div class="form-group">
+                <input type="file" class="form-control-file" id="choose_file" />
+                <label for="exampleFormControlFile1" id="photolabel"
+                  >Upload a photo of your dog</label
+                >
+              </div>
+            </div>
+            <div class="choices">
+              <input type="checkbox" name="agree_rated" class="checkbox" />
+              <label class="agree">I would like to have my dog rated</label>
+            </div>
+            <div class="choices">
+              <input type="checkbox" name="agree_playdate" class="checkbox" />
+              <label class="agree"
+                >I would like to sign my dog up for playdate matching</label
+              >
+            </div>
+            <button class="btn btn-warning" id="add_btn">Add dog</button>
+          </form>
         </div>
       </div>
-      <!--RATE END-->
+      <!--ADD DOG-->
 
       <!--AD START-->
       <img id="ad" src="{% static 'img/match_ad.jpg'%}" />

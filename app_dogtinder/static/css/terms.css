@@ -1,0 +1,26 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Montserrat;
+}
+body {
+  padding: 30px;
+}
+img {
+  width: 10%;
+}
+h1 {
+  color: orange;
+}
+h3 {
+  margin-top: 20px;
+  margin-left: 10px;
+}
+p,
+li {
+  margin: 10px;
+  font-size: 11pt;
+}
+li {
+  margin-left: 30px;
+}

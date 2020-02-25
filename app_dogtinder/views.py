@@ -9,6 +9,9 @@ def login(request):
 def registration(request):
     return render(request, 'registration.html')
 
+def terms(request):
+    return render(request, 'terms.html')
+
 def add_dog(request):
     return render(request, 'add_dog.html')
 
@@ -26,3 +29,10 @@ def contact(request):
 
 def match(request):
     return render(request, 'match.html')
+
+def another_dog(request):
+    return render(request, 'more_dog.html')
+
+def logout(request):
+    request.session.clear()
+    return redirect('/login')
