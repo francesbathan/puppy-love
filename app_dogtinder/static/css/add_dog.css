@@ -1,13 +1,14 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-style: Montserrat !important;
 }
 body {
   background-color: white;
 }
 #form_panel {
   width: 450px;
-  margin: 10vh;
+  margin: 5vh;
   margin-left: auto;
   margin-right: auto;
   text-align: center;
@@ -16,11 +17,10 @@ button {
   margin: 20px 0px 0px 0px;
 }
 .links {
-  color: orange;
+  color: orange !important;
   text-decoration: none !important;
 }
-#already {
-  margin-left: 35px;
+
 }
 #logo {
   margin-left: auto;
@@ -172,4 +172,37 @@ textarea.question:invalid ~ input[type="submit"] {
   100% {
     opacity: 1;
   }
+}
+.form-group {
+    text-align: center;
+    color: #999;
+    font-weight: 100;
+    margin-top: 20px;
+}
+#photolabel {
+    font-size: 14pt;
+}
+.form-control-file {
+    color: #999;
+    text-align: center;
+    font-size: 10pt;
+    margin: 0 auto;
+    width: 190px;
+}
+.choices {
+  margin-top: 10px;
+}
+.agree,
+#checkbox {
+  color: #999;
+  font-weight: 100;
+  font-size: 11pt;
+  padding: 0px;
+  display: inline-block;
+  vertical-align: middle;
+}
+#skip {
+  font-size: 10pt;
+  padding: 3px 31px;
+  margin: 5px;
 }

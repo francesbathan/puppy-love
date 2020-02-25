@@ -20,8 +20,9 @@
   <body>
     <div id="form_panel">
       <img id="logo" src="{% static 'img/logo_small.png' %}" />
-      <form action="/process_dog" method="POST" class="form-group">
+      <form action="/process_dog" method="POST">
         <h3>Add your dog.</h3>
+
         <div>
           <input
             type="text"
@@ -98,14 +99,32 @@
             autocomplete="off"
           ></textarea>
           <label for="dog_desc"><span>Tell us more about your dog</span></label>
+          <div class="form-group">
+            <label for="exampleFormControlFile1" id="photolabel"
+              >Upload a photo of your dog</label
+            >
+            <input
+              type="file"
+              class="form-control-file"
+              id="exampleFormControlFile1"
+            />
+          </div>
+        </div>
+        <div class="choices">
+          <input type="checkbox" name="agree_rated" id="checkbox" />
+          <label class="agree">I would like to have my dog rated</label>
+        </div>
+        <div class="choices">
+          <input type="checkbox" name="agree_playdate" id="checkbox" />
+          <label class="agree"
+            >I would like to sign my dog up for playdate matching</label
+          >
         </div>
         <button class="btn btn-warning">Add dog</button>
-        <button class="btn btn-outline-warning">Skip</button>
       </form>
-      <p>
-        Already have an account?
-        <a href="/login" class="links">Log in.</a>
-      </p>
+      <button id="skip" class="btn btn-outline-warning">
+        <a href="/dashboard" class="links">Skip</a>
+      </button>
     </div>
   </body>
 </html>

@@ -1,6 +1,7 @@
 * {
   margin: 0px;
   padding: 0px;
+  font-style: Montserrat !important;
 }
 body {
   background-color: white;
@@ -10,20 +11,16 @@ body {
   margin: 10vh;
   margin-left: auto;
   margin-right: auto;
-}
-.form-elements {
-  margin-left: 35px;
+  text-align: center;
 }
 button {
-  margin: 20px 0px 0px 35px;
+  margin: 20px 0px 0px 0px;
 }
 .links {
   color: orange;
   text-decoration: none !important;
 }
-#already {
-  margin-left: 35px;
-}
+
 #logo {
   margin-left: auto;
   margin-right: auto;
@@ -34,12 +31,11 @@ span,
 label,
 textarea {
   display: block;
-  margin: 10px;
-  margin-right: auto;
-  margin-left: auto;
+  margin: 0 auto;
   padding: 5px;
   border: none;
   font-size: 22px;
+  text-align: center;
 }
 
 textarea:focus,
@@ -50,10 +46,11 @@ input:focus {
 
 input.question,
 textarea.question {
-  font-size: 24px;
+  font-size: 18px;
   font-weight: 300;
   border-radius: 2px;
   margin: 0;
+  text-align: center;
   border: none;
   width: 100%;
   background: rgba(0, 0, 0, 0);
@@ -67,12 +64,16 @@ textarea.question + label {
   display: block;
   position: relative;
   white-space: nowrap;
+  text-align: center;
   padding: 0;
   margin: 0;
-  width: 30%;
+  width: 60%;
   border-top: 1px solid orangered;
   -webkit-transition: width 0.4s ease;
   transition: width 0.4s ease;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* transition: left 0.4s linear, margin-left 0.4s ease-out; */
   height: 0px;
 }
 
@@ -100,9 +101,10 @@ input.question:valid + label > span {
 
 textarea.question:focus + label > span,
 textarea.question:valid + label > span {
-  top: -150px;
-  font-size: 18px;
+  top: -90px;
+  font-size: 14px;
   color: #333;
+  text-align: center;
 }
 
 input.question:valid + label,
@@ -120,9 +122,10 @@ textarea.question + label > span {
   font-weight: 300;
   margin: 0;
   position: absolute;
+  text-align: center;
   color: #8f8f8f;
-  font-size: 24px;
-  top: -40px;
+  font-size: 20px;
+  top: -35px;
   left: 0px;
   z-index: -1;
   -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;

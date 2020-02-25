@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Profile | Puppy Love</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dogprofile_style.css' %}" />
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+      integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T"
+      crossorigin="anonymous"
+    />
+  </head>
+  <body>
+    <div id="container">
+      <!--HEADER START-->
+      <div>
+        <header id="header">
+          <div>
+            <nav
+              class="navbar navbar-expand-lg navbar-light"
+              style="background-color: rgb(255, 250, 236)"
+            >
+              <a class="navbar-brand" href="#">
+                <img
+                  href="/dashboard"
+                  id="logo"
+                  src="{% static 'img/logo_small.png' %}"
+                />
+              </a>
+              <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item active">
+                    <a class="nav-link" href="/dashboard">Home</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/dog_profile">Dog Profile</a>
+                  </li>
+                  <li class="nav-item">
+                    <a class="nav-link" href="/match"
+                      >Match Pup<span class="badge badge-pill badge-warning"
+                        >Soon!</span
+                      ></a
+                    >
+                  </li>
+                </ul>
+              </div>
+              <div
+                class="collapse navbar-collapse help"
+                id="navbarSupportedContent"
+              >
+                <ul class="navbar-nav mr-auto">
+                  <li class="nav-item dropdown">
+                    <a
+                      class="nav-link dropdown-toggle"
+                      href="#"
+                      id="navbarDropdown"
+                      role="button"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                    >
+                      Help
+                    </a>
+                    <div
+                      class="dropdown-menu dropdown-menu-right"
+                      aria-labelledby="navbarDropdown"
+                    >
+                      <a class="dropdown-item" href="/account_settings"
+                        >Account Settings</a
+                      >
+                      <a class="dropdown-item" href="/how">How It Works</a>
+                      <div class="dropdown-divider"></div>
+                      <a class="dropdown-item" href="/contact">Contact Us</a>
+                    </div>
+                  </li>
+                </ul>
+              </div>
+            </nav>
+          </div>
+        </header>
+      </div>
+      <!--HEADER END-->
+
+      <!--PROFILE START-->
+      <div id="main">
+        <div id="banner">
+          <h1 id="rate_title">LILLY</h1>
+          <h6 id="subtitle">
+            A GOOD DOG
+          </h6>
+        </div>
+        <!-- <h3>RATE DOGS</h3> -->
+        <div id="rating_panel">
+          <div id="pic_panel">
+            <img src="{% static 'img/lilly.jpg'%}" class="dog_pic" />
+          </div>
+          <div id="desc">
+            <div>
+              <h3>Lilly, 6</h3>
+              <p>Corona, CA</p>
+              <p>
+                Lorem ipsum dolor, sit amet consectetur adipisicing elit. Quidem
+                totam eum ipsum voluptates repellat consequatur delectus unde
+                provident quaerat, dolore minus natus, quasi inventore quo
+                perspiciatis, facilis nisi consectetur officiis!
+              </p>
+            </div>
+            <div id="overall_rating">
+              <p>
+                Overall Rating:
+              </p>
+              <h2>15/10</h2>
+              <p id="good_dog">
+                (and always a good dog)
+              </p>
+            </div>
+          </div>
+        </div>
+        <button class="btn btn-outline-warning" id="edit_profile">
+          <a href="/edit" id="edit_text">Edit Profile</a>
+        </button>
+      </div>
+      <!--PROFILE END-->
+
+      <!--FOOTER-->
+      <div id="footer">
+        <div class="column">
+          <h6>Menu</h6>
+          <a class="links" href="/dashboard">Home</a>
+          <a class="links" href="/dog_profile">Dog Profile</a>
+          <a class="links" href="/match">Match Pup</a>
+        </div>
+        <div class="column">
+          <h6>Account</h6>
+          <a class="links" href="/account_settings">Account Settings</a>
+          <a class="links" href="/how">How It Works</a>
+          <a class="links" href="/contact">Contact Us</a>
+        </div>
+        <div class="column">
+          <h6>Contact</h6>
+          <p class="footer_text">
+            175 E Olive Ave<br />
+            Burbank CA 91502<br />
+            +1 844 446 3656
+          </p>
+        </div>
+
+        <div class="column">
+          <h6>About Us</h6>
+          <p class="footer_text" id="about">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+            laborum numquam? Nulla excepturi reprehenderit perspiciatis
+            deleniti, tempore facere hic quidem beatae cupiditate ut, quibusdam
+            enim, quas non porro voluptatum quam.
+          </p>
+        </div>
+      </div>
+      <div id="social_media">
+        <a class="social_links" href="https://www.facebook.com/WeRateDogs/">
+          <img class="social" src="{% static 'img/fb-icon.png' %}" />
+        </a>
+        <a
+          class="social_links"
+          href="https://www.instagram.com/weratedogs/?hl=en"
+        >
+          <img class="social" src="{% static 'img/ig-icon.png' %}" />
+        </a>
+        <a
+          class="social_links"
+          href="https://twitter.com/dog_rates?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+        >
+          <img class="social" src="{% static 'img/tw-icon.png' %}" />
+        </a>
+        <a
+          class="social_links"
+          href="https://github.com/francesbathan/puppy-love"
+        >
+          <img class="social" src="{% static 'img/git-icon.png' %}" />
+        </a>
+        <p id="copyright">© A Django Project. 2020. All Rights Reserved.</p>
+      </div>
+      <script src="{% static 'js/dashboard_scripts.js' %}"></script>
+      <script
+        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"
+      ></script>
+      <script
+        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"
+      ></script>
+    </div>
+  </body>
+</html>
