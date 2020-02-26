@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Dashboard | Puppy Love</title>
+    <title>Add A Dog | Puppy Love</title>
     {% load static %}
     <link rel="icon" href="{% static 'img/browser-icon.png' %}" />
     <link rel="stylesheet" href="{% static 'css/more_dog.css' %}" />
@@ -113,7 +113,7 @@
             <div>
               <input
                 type="text"
-                name="dog_age"
+                name="age"
                 class="question"
                 id="nme"
                 required
@@ -124,7 +124,7 @@
             <div>
               <input
                 type="text"
-                name="dog_breed"
+                name="breed"
                 class="question"
                 id="nme"
                 required
@@ -135,7 +135,7 @@
             <div>
               <input
                 type="text"
-                name="text"
+                name="city"
                 class="question"
                 id="nme"
                 required
@@ -146,7 +146,7 @@
             <div>
               <input
                 type="text"
-                name="text"
+                name="state"
                 class="question"
                 id="nme"
                 required
@@ -157,7 +157,7 @@
             <div>
               <input
                 type="text"
-                name="text"
+                name="zipcode"
                 class="question"
                 id="nme"
                 required
@@ -168,7 +168,7 @@
             <div>
               <textarea
                 type="text"
-                name="dog_desc"
+                name="description"
                 class="question"
                 id="nme"
                 required
@@ -178,21 +178,16 @@
                 ><span>Tell us more about your dog</span></label
               >
               <div class="form-group">
-                <input type="file" class="form-control-file" id="choose_file" />
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="choose_file"
+                  name="image"
+                />
                 <label for="exampleFormControlFile1" id="photolabel"
                   >Upload a photo of your dog</label
                 >
               </div>
-            </div>
-            <div class="choices">
-              <input type="checkbox" name="agree_rated" class="checkbox" />
-              <label class="agree">I would like to have my dog rated</label>
-            </div>
-            <div class="choices">
-              <input type="checkbox" name="agree_playdate" class="checkbox" />
-              <label class="agree"
-                >I would like to sign my dog up for playdate matching</label
-              >
             </div>
             <button class="btn btn-warning" id="add_btn">Add dog</button>
           </form>

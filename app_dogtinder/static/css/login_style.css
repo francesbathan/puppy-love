@@ -172,3 +172,7 @@ textarea.question:invalid ~ input[type="submit"] {
     opacity: 1;
   }
 }
+#errormsg {
+  color: red;
+  font-size: 10pt;
+}

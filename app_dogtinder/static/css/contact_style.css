@@ -36,7 +36,6 @@
 }
 /*header end*/
 
-/*rate*/
 #main {
   margin: 50px;
 }
@@ -116,10 +115,9 @@
   /* background-color: #fffaec; */
 }
 #dog {
-  max-width: 100;
-  display: inline-block;
-  vertical-align: top;
-  margin: 0px 5%;
+  width: 80vw !important;
+  display: block;
+  margin-left: 10vw;
 }
 .contact_fields {
   display: block;

@@ -22,6 +22,7 @@
     <div id="form_panel">
       <img id="logo" src="{% static 'img/logo_small.png' %}" />
       <form action="/process_login" method="POST" class="form-group">
+        {% csrf_token %}
         <div class="form-elements">
           <input
             type="text"
@@ -44,7 +45,10 @@
           />
           <label for="password"><span>Password</span></label>
         </div>
-        <button class="btn btn-warning">Log in</button>
+        {%for message in messages%}
+        <p class="errormsg">{{ message }}</p>
+        {%endfor%}
+        <button type="submit" class="btn btn-warning">Log in</button>
       </form>
       <p id="already">
         Don't have an account?

@@ -184,3 +184,7 @@ textarea.question:invalid ~ input[type="submit"] {
   display: inline-block;
   vertical-align: middle;
 }
+#errormsg {
+  color: red;
+  font-size: 10pt;
+}

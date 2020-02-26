@@ -22,6 +22,7 @@
     <div id="form_panel">
       <img id="logo" src="{% static 'img/logo_small.png' %}" />
       <form action="/process_registration" method="POST" class="form-group">
+        {% csrf_token %}
         <div>
           <input
             type="text"
@@ -89,7 +90,7 @@
           <label for="password"><span>Confirm Password</span></label>
         </div>
         <div id="agree_to_terms">
-          <input type="checkbox" name="agree_terms" id="checkbox" />
+          <input type="checkbox" name="terms" id="checkbox" />
           <label class="agree"
             >I agree to the
             <a href="/terms" target="_blank" class="links"
@@ -97,7 +98,10 @@
             >.</label
           >
         </div>
-        <button class="btn btn-warning">Register</button>
+        {%for message in messages%}
+        <p class="errormsg">{{ message }}</p>
+        {%endfor%}
+        <button class="btn btn-warning" type="submit">Register</button>
       </form>
       <p>
         Already have an account?

@@ -1,0 +1,417 @@
+* {
+  margin: 0px;
+  padding: 0px;
+  font-family: Montserrat;
+}
+#container {
+  display: flex;
+  flex-direction: column;
+}
+/*header*/
+#logo {
+  width: 50px;
+}
+.collapse {
+  position: absolute;
+  margin-left: 70px;
+  /* background-color: rgb(255, 238, 206); */
+  font-size: 10pt;
+}
+.dropdown-menu {
+  background-color: #fffaec !important;
+  border: none !important;
+  margin-top: 15px !important;
+}
+.dropdown-item {
+  font-size: 10pt;
+  background-color: #fffaec !important;
+}
+.help {
+  position: absolute;
+  right: 0;
+  margin-right: 50px;
+}
+.badge {
+  margin-left: 2px;
+}
+/*header end*/
+
+/*rate*/
+#main {
+  margin: 50px;
+}
+/****banner_title****/
+#banner {
+  height: 40vh;
+  background-image: linear-gradient(
+      to right bottom,
+      rgba(253, 207, 121, 0.8),
+      rgba(182, 124, 0, 0.8)
+    ),
+    url("../img/samoyed.gif");
+  background-repeat: no-repeat;
+  background-size: cover;
+  margin: 10px;
+  clip-path: polygon(0% 0%, 100% 0%, 100% 100%, 0% 80%);
+  background-position: center;
+}
+
+#rate_title {
+  text-align: center;
+  margin: auto 0;
+  font-weight: 500;
+  padding-top: 7%;
+  font-family: Montserrat;
+  animation: moveInLeft 1.5s ease-out;
+  color: white;
+}
+@keyframes moveInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-10rem);
+  }
+  80% {
+    transform: translateX(1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+#subtitle {
+  text-align: center;
+  margin: auto 0;
+  font-weight: 500;
+  /* padding-top: 5%; */
+  font-family: Montserrat;
+  animation: moveInRight 1.5s ease-out;
+  animation-fill-mode: backwards;
+  color: white;
+}
+@keyframes moveInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(10rem);
+  }
+  80% {
+    transform: translateX(-1rem);
+  }
+  100% {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+/***banner title end***/
+
+/*RATE*/
+#rating_panel {
+  display: flex;
+  flex-grow: 1;
+  justify-content: center;
+  /* background-color: #fffaec; */
+}
+
+.dog_pic {
+  width: 300px;
+  border: 5px solid rgb(224, 172, 74);
+}
+#desc {
+  padding: 30px;
+  margin-top: auto;
+  margin-bottom: auto;
+  width: 800px;
+  /* background-color: #fffaec; */
+}
+.form-group {
+  width: 400px;
+  margin: 30px 0px;
+  display: block;
+}
+.value {
+  /* border-bottom: 4px dashed #bdc3c7; */
+  text-align: center;
+  font-weight: bold;
+  font-size: 35pt;
+  width: 300px;
+  height: 100px;
+  line-height: 80px;
+  margin: 0px auto;
+  letter-spacing: -0.07em;
+  text-shadow: white 2px 2px 2px;
+}
+input[type="range"] {
+  display: block;
+  -webkit-appearance: none;
+  background-color: #fcd600;
+  width: 300px;
+  height: 5px;
+  border-radius: 5px;
+  margin: 0 auto;
+  outline: 0;
+}
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  background-color: #ff5e00;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  border: 2px solid white;
+  cursor: pointer;
+  transition: 0.3s ease-in-out;
+}
+​ input[type="range"]::-webkit-slider-thumb:hover {
+  background-color: white;
+  border: 2px solid #ff5e00;
+}
+input[type="range"]::-webkit-slider-thumb:active {
+  transform: scale(1.6);
+}
+#next {
+  font-size: 200pt;
+  color: lightgray !important;
+  text-decoration: none !important;
+  margin-left: 20px;
+}
+#save {
+  font-size: 10pt;
+  margin: 5% auto;
+  display: block;
+}
+/*rate end*/
+
+/*ad*/
+#ad {
+  margin: 0vh auto;
+  margin-bottom: 10vh;
+  max-width: 100%;
+  height: auto;
+}
+
+/*footer*/
+#footer {
+  background-color: #fffaec;
+  padding: 10px;
+  text-align: center;
+}
+.column {
+  display: inline-block;
+  margin: 20px 50px;
+}
+.links {
+  color: orange !important;
+  text-decoration: none !important;
+  display: block;
+  font-size: 9pt;
+}
+.footer_text {
+  color: gray !important;
+  text-decoration: none !important;
+  display: block;
+  font-size: 9pt;
+}
+h6 {
+  color: rgb(119, 77, 0);
+}
+#about {
+  width: 500px;
+}
+.social {
+  display: inline-block;
+  width: 40px;
+}
+#social_media {
+  display: block;
+  background-color: #fffaec;
+  text-align: center;
+  padding: 10px;
+}
+#copyright {
+  display: block;
+  font-size: 8pt;
+  color: orange;
+}
+.social_links {
+  text-decoration: none !important;
+}
+
+#form_panel {
+  width: 450px;
+  margin: 10vh;
+  margin-left: auto;
+  margin-right: auto;
+  text-align: center;
+}
+button {
+  margin: 20px 0px 0px 0px;
+}
+#updatebtn {
+  margin: 30px;
+}
+.links {
+  color: orange;
+  text-decoration: none !important;
+}
+
+#logo {
+  margin-left: auto;
+  margin-right: auto;
+  display: block;
+}
+input,
+span,
+label,
+textarea {
+  display: block;
+  margin: 0 auto;
+  padding: 5px;
+  border: none;
+  font-size: 22px;
+  text-align: center;
+}
+
+textarea:focus,
+input:focus {
+  outline: 0;
+}
+/* Question */
+
+input.question,
+textarea.question {
+  font-size: 18px;
+  font-weight: 300;
+  border-radius: 2px;
+  margin: 0;
+  text-align: center;
+  border: none;
+  width: 100%;
+  background: rgba(0, 0, 0, 0);
+  transition: padding-top 0.2s ease, margin-top 0.2s ease;
+  overflow-x: hidden; /* Hack to make "rows" attribute apply in Firefox. */
+}
+/* Underline and Placeholder */
+
+input.question + label,
+textarea.question + label {
+  display: block;
+  position: relative;
+  white-space: nowrap;
+  text-align: center;
+  padding: 0;
+  margin: 0;
+  width: 60%;
+  border-top: 1px solid orangered;
+  -webkit-transition: width 0.4s ease;
+  transition: width 0.4s ease;
+  left: 50%;
+  transform: translate(-50%, 0);
+  /* transition: left 0.4s linear, margin-left 0.4s ease-out; */
+  height: 0px;
+}
+
+input.question:focus + label,
+textarea.question:focus + label {
+  width: 80%;
+}
+
+input.question:focus,
+input.question:valid {
+  padding-top: 35px;
+}
+
+textarea.question:valid,
+textarea.question:focus {
+  margin-top: 35px;
+}
+
+input.question:focus + label > span,
+input.question:valid + label > span {
+  top: -70px;
+  font-size: 14px;
+  color: #333;
+}
+
+textarea.question:focus + label > span,
+textarea.question:valid + label > span {
+  top: -90px;
+  font-size: 14px;
+  color: #333;
+  text-align: center;
+}
+
+input.question:valid + label,
+textarea.question:valid + label {
+  border-color: green;
+}
+
+input.question:invalid,
+textarea.question:invalid {
+  box-shadow: none;
+}
+
+input.question + label > span,
+textarea.question + label > span {
+  font-weight: 300;
+  margin: 0;
+  position: absolute;
+  text-align: center;
+  color: #8f8f8f;
+  font-size: 20px;
+  top: -35px;
+  left: 0px;
+  z-index: -1;
+  -webkit-transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+  transition: top 0.2s ease, font-size 0.2s ease, color 0.2s ease;
+}
+
+input[type="submit"] {
+  -webkit-transition: opacity 0.2s ease, background 0.2s ease;
+  transition: opacity 0.2s ease, background 0.2s ease;
+  display: block;
+  opacity: 0;
+  margin: 10px 0 0 0;
+  padding: 10px;
+  cursor: pointer;
+}
+
+input[type="submit"]:hover {
+  background: #eee;
+}
+
+input[type="submit"]:active {
+  background: #999;
+}
+
+input.question:valid ~ input[type="submit"],
+textarea.question:valid ~ input[type="submit"] {
+  -webkit-animation: appear 1s forwards;
+  animation: appear 1s forwards;
+}
+
+input.question:invalid ~ input[type="submit"],
+textarea.question:invalid ~ input[type="submit"] {
+  display: none;
+}
+
+@-webkit-keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes appear {
+  100% {
+    opacity: 1;
+  }
+}
+#agree_to_terms {
+  margin-top: 20px;
+}
+.agree,
+#checkbox {
+  color: #999;
+  font-weight: 100;
+  font-size: 11pt;
+  padding: 0px;
+  display: inline-block;
+  vertical-align: middle;
+}
