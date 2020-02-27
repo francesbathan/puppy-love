@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Add A Dog | Puppy Love</title>
+    <title>Edit {{current_dog.dog_name}}'s Profile | Puppy Love</title>
     {% load static %}
     <link rel="icon" href="{% static 'img/browser-icon.png' %}" />
     <link rel="stylesheet" href="{% static 'css/more_dog.css' %}" />
@@ -17,6 +17,7 @@
   <body>
     <div id="container">
       <!--HEADER START-->
+      {% for dog in dogs %}
       <div>
         <header id="header">
           <div>
@@ -35,7 +36,9 @@
                     <a class="nav-link" href="/dashboard">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dog_profile">Dog Profile</a>
+                    <a class="nav-link" href="/dog_profile/{{current_user.id}}"
+                      >Dog Profile</a
+                    >
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/match"
@@ -51,6 +54,12 @@
                 id="navbarSupportedContent"
               >
                 <ul class="navbar-nav mr-auto">
+                  <li>
+                    <a class="nav-link">Hello, {{ current_user.first_name }}</a>
+                  </li>
+                  <li>
+                    <a class="nav-link">|</a>
+                  </li>
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
@@ -90,7 +99,9 @@
       <!--RATE START-->
       <div id="main">
         <div id="banner">
-          <h1 id="rate_title">EDIT LILLY'S PROFILE</h1>
+          <h1 id="rate_title">
+            EDIT {{current_dog.dog_name|upper}}'S PROFILE
+          </h1>
           <h6 id="subtitle">
             STILL A GOOD DOG EVEN WITH A FEW CHANGES
           </h6>
@@ -98,7 +109,8 @@
 
         <!--EDIT DOG-->
         <div id="form_panel">
-          <form action="/process_dog" method="POST">
+          <form action="/dog_update/{{current_dog.id}}" method="POST">
+            {%csrf_token%}
             <div>
               <input
                 type="text"
@@ -107,84 +119,102 @@
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_dog.dog_name }}"
               />
               <label for="dog_name"><span>Name</span></label>
             </div>
             <div>
               <input
                 type="text"
-                name="dog_age"
+                name="age"
                 class="question"
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_dog.age }}"
               />
               <label for="dog_age"><span>Age</span></label>
             </div>
             <div>
               <input
                 type="text"
-                name="dog_breed"
+                name="breed"
                 class="question"
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_dog.breed }}"
               />
               <label for="dog_breed"><span>Breed</span></label>
             </div>
             <div>
               <input
                 type="text"
-                name="text"
+                name="city"
                 class="question"
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_dog.city }}"
               />
               <label for="city"><span>City</span></label>
             </div>
             <div>
               <input
                 type="text"
-                name="text"
+                name="state"
                 class="question"
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_dog.state }}"
               />
               <label for="state"><span>State</span></label>
             </div>
             <div>
               <input
                 type="text"
-                name="text"
+                name="zipcode"
                 class="question"
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_dog.zipcode }}"
               />
               <label for="zip"><span>Zip Code</span></label>
             </div>
             <div>
               <textarea
                 type="text"
-                name="dog_desc"
+                name="description"
                 class="question"
                 id="nme"
                 required
                 autocomplete="off"
-              ></textarea>
+              >
+{{current_dog.description}}</textarea
+              >
               <label for="dog_desc"
                 ><span>Tell us more about your dog</span></label
               >
               <div class="form-group">
-                <input type="file" class="form-control-file" id="choose_file" />
                 <label for="exampleFormControlFile1" id="photolabel"
                   >Change the photo of your dog</label
                 >
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="exampleFormControlFile1"
+                  name="image"
+                />
               </div>
+              {%for message in messages%}
+              <p class="errormsg">{{ message }}</p>
+              {%endfor%}
             </div>
-            <button class="btn btn-warning" id="add_btn">Update</button>
+            <button class="btn btn-warning" id="add_btn" type="submit">
+              Update
+            </button>
           </form>
         </div>
       </div>
@@ -195,7 +225,9 @@
         <div class="column">
           <h6>Menu</h6>
           <a class="links" href="/dashboard">Home</a>
-          <a class="links" href="/dog_profile">Dog Profile</a>
+          <a class="links" href="/dog_profile/{{current_user.id}}"
+            >Dog Profile</a
+          >
           <a class="links" href="/match">Match Pup</a>
         </div>
         <div class="column">
@@ -223,6 +255,7 @@
           </p>
         </div>
       </div>
+      {%endfor%}
       <div id="social_media">
         <a class="social_links" href="https://www.facebook.com/WeRateDogs/">
           <img class="social" src="{% static 'img/fb-icon.png' %}" />

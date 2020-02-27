@@ -19,8 +19,13 @@ class UserManager(models.Manager): #validation for user login/registration
             user_errors['password'] = "Password must be more than 6 characters." #error message for password less than 6 characters
         if post_data['password'] != post_data['confirm_pw']: #checks if password and confirm password match
             user_errors['confirm_pw'] = "Passwords do not match. Try again."
+        checked = False
+        try:
+            post_data['terms']
+        except:
+            user_errors['terms'] = "Please agree to the terms and conditions."
         return user_errors
-    
+
     def login_validator(self, post_data): #validator for login form
         errors = {}
         current_user = User.objects.filter(username=post_data['username']) #defines variable for user
@@ -57,7 +62,6 @@ class User(models.Model): #class for the user
     username = models.CharField(max_length=255)
     email = models.EmailField()
     password = models.CharField(max_length=255)
-    # terms = models.BooleanField(error_messages={'required': "You must accept the terms and conditions."})
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     objects = UserManager()
@@ -71,9 +75,14 @@ class Dog(models.Model): #class for the dog
     zipcode = models.CharField(max_length=5)
     description = models.TextField()
     photo = models.ImageField(upload_to="dogs")
-    dog = models.ForeignKey(User, related_name="dogs", on_delete=models.CASCADE)
+    user = models.ForeignKey(User, related_name="dogs", on_delete=models.CASCADE)
     created_at = models.DateTimeField(auto_now_add=True)
     updated_at = models.DateTimeField(auto_now=True)
     uploaded_at = models.DateTimeField(auto_now_add=True)
     objects = DogManager()
 
+class RatingList(models.Model):
+    rating = models.IntegerField()
+    dog = models.ForeignKey(Dog, related_name="ratings", on_delete=models.CASCADE)
+    created_at = models.DateTimeField(auto_now_add=True)
+    updated_at = models.DateTimeField(auto_now=True)

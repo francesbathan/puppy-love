@@ -35,7 +35,9 @@
                     <a class="nav-link" href="/dashboard">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dog_profile">Dog Profile</a>
+                    <a class="nav-link" href="/dog_profile/{{current_user.id}}"
+                      >Dog Profile</a
+                    >
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/match"
@@ -51,6 +53,12 @@
                 id="navbarSupportedContent"
               >
                 <ul class="navbar-nav mr-auto">
+                  <li>
+                    <a class="nav-link">Hello, {{ current_user.first_name }}</a>
+                  </li>
+                  <li>
+                    <a class="nav-link">|</a>
+                  </li>
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
@@ -175,7 +183,9 @@
         <div class="column">
           <h6>Menu</h6>
           <a class="links" href="/dashboard">Home</a>
-          <a class="links" href="/dog_profile">Dog Profile</a>
+          <a class="links" href="/dog_profile/{{current_user.id}}"
+            >Dog Profile</a
+          >
           <a class="links" href="/match">Match Pup</a>
         </div>
         <div class="column">
@@ -203,6 +213,7 @@
           </p>
         </div>
       </div>
+
       <div id="social_media">
         <a class="social_links" href="https://www.facebook.com/WeRateDogs/">
           <img class="social" src="{% static 'img/fb-icon.png' %}" />

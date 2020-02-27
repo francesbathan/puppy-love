@@ -108,11 +108,12 @@
   display: flex;
   flex-grow: 1;
   justify-content: center;
+  flex-direction: row;
   /* background-color: #fffaec; */
 }
 
 .dog_pic {
-  width: 300px;
+  max-height: 400px !important;
   border: 5px solid rgb(224, 172, 74);
 }
 #desc {
@@ -170,7 +171,13 @@ input[type="range"]::-webkit-slider-thumb:active {
   font-size: 200pt;
   color: lightgray !important;
   text-decoration: none !important;
-  margin-left: 20px;
+  margin-left: 0px;
+  border-style: none;
+  background-color: transparent;
+  height: 100px;
+}
+#next:focus {
+  outline: 0 !important;
 }
 #save {
   font-size: 10pt;
@@ -181,8 +188,7 @@ input[type="range"]::-webkit-slider-thumb:active {
 
 /*ad*/
 #ad {
-  margin: 0vh auto;
-  margin-bottom: 10vh;
+  margin: 8vh auto 10vh auto;
   max-width: 100%;
   height: auto;
 }

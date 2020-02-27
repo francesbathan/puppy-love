@@ -173,6 +173,7 @@ textarea.question:invalid ~ input[type="submit"] {
   }
 }
 #errormsg {
-  color: red;
-  font-size: 10pt;
+  color: red !important;
+  font-size: 9pt;
+  margin-top: 5px;
 }

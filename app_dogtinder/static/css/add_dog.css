@@ -21,7 +21,6 @@ button {
   text-decoration: none !important;
 }
 
-}
 #logo {
   margin-left: auto;
   margin-right: auto;
@@ -174,20 +173,20 @@ textarea.question:invalid ~ input[type="submit"] {
   }
 }
 .form-group {
-    text-align: center;
-    color: #999;
-    font-weight: 100;
-    margin-top: 20px;
+  text-align: center;
+  color: #999;
+  font-weight: 100;
+  margin-top: 20px;
 }
 #photolabel {
-    font-size: 14pt;
+  font-size: 14pt;
 }
 .form-control-file {
-    color: #999;
-    text-align: center;
-    font-size: 10pt;
-    margin: 0 auto;
-    width: 190px;
+  color: #999;
+  text-align: center;
+  font-size: 10pt;
+  margin: 0 auto;
+  width: 190px;
 }
 .choices {
   margin-top: 10px;
@@ -205,4 +204,9 @@ textarea.question:invalid ~ input[type="submit"] {
   font-size: 10pt;
   padding: 3px 31px;
   margin: 5px;
+}
+#errormsg {
+  color: red !important;
+  font-size: 9pt;
+  margin-top: 5px;
 }

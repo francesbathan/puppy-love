@@ -113,6 +113,9 @@
               name="image"
             />
           </div>
+          {%for message in messages%}
+          <p id="errormsg">{{ message }}</p>
+          {%endfor%}
         </div>
           <button class="btn btn-warning" type="submit">Add dog</button>
         </form>

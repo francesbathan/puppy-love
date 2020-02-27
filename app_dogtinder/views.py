@@ -32,7 +32,7 @@ def process_registration(request): #process for registration form + validation
         request.session['register_error'] = True
         for single_error in errors_returned.values():
             messages.error(request, single_error)
-        return redirect('/register')
+        return redirect('/registration')
     hashed_pw = bcrypt.hashpw(form['password'].encode(), bcrypt.gensalt()).decode() #hashes password so it doesn't display on the database
     new_user = User.objects.create(first_name=form['first_name'], last_name=form['last_name'], email=form['email'], username=form['username'],  password=hashed_pw)
     request.session['user_id'] = new_user.id
@@ -54,32 +54,122 @@ def process_dog(request):
         return redirect('/add_dog')
     if request.method == 'POST':
         photo = request.FILES['image']
-        new_dog = Dog.objects.create(dog_name=form['dog_name'], age=form['age'], breed=form['breed'], city=form['city'],  state=form['state'], zipcode=form['zipcode'], description=form['description'], dog=User.objects.get(id=request.session['user_id']), photo=photo)
+        new_dog = Dog.objects.create(dog_name=form['dog_name'], age=form['age'], breed=form['breed'], city=form['city'],  state=form['state'], zipcode=form['zipcode'], description=form['description'], user=User.objects.get(id=request.session['user_id']), photo=photo)
     return redirect('/dashboard') 
 
 def dashboard(request): # renders dashboard 
-    return render(request, 'dashboard.html')
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    context = {
+        'dogs': Dog.objects.all(),
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'dashboard.html', context)
 
-def dog_profile(request): # renders dog's profile page
-    return render(request, 'profile.html')
+def process_rating(request): #processes rating for dogs and goes onto the next dog
+    form=request.POST
+    print("hello")
+    print(form)
+    return redirect('/dashboard')
 
-def edit(request): # renders edit profile for dog
-    return render(request, 'edit_dog.html')
+def dog_profile(request, id): # renders dog's profile page
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    context = {
+
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'profile.html', context)
+
+def edit(request, id): # renders edit profile for dog
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    # errors_returned = Dog.objects.dog_validator(form) 
+    # if len(errors_returned) > 0:
+    #     request.session['dog_error'] = True
+    #     for single_error in errors_returned.values():
+    #         messages.error(request, single_error)
+    #     return redirect(f'/edit/{dog.id}')
+    context = {
+        'dogs': Dog.objects.all(),
+        'current_dog': Dog.objects.get(id=id),
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'edit_dog.html', context)
+
+def dog_update(request, id): #processes the information that went through the form and redirects to the dog profile page
+    form = request.POST
+    current_dog=Dog.objects.get(id=id)
+    current_dog.dog_name=form['dog_name']
+    current_dog.age=form['age']
+    current_dog.breed=form['breed']
+    current_dog.city=form['city']
+    current_dog.state=form['state']
+    current_dog.zipcode=form['zipcode']
+    current_dog.description=form['description']
+    current_dog.save()
+    # if current_dog.photo != request.FILES['image']:
+    #     current_dog.photo.save(request.FILES['image'])
+    return redirect(f'/dog_profile/{current_dog.id}')
 
 def how(request): # renders how it works page
-    return render(request, 'how.html')
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    context = {
+        'dogs': Dog.objects.all(),
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'how.html', context)
 
 def contact(request): # renders contact us page
-    return render(request, 'contact.html')
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    context = {
+        'dogs': Dog.objects.all(),
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'contact.html', context)
 
 def match(request): # renders matchpup page (no features available yet, just ad)
-    return render(request, 'match.html')
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    context = {
+        'dogs': Dog.objects.all(),
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'match.html', context)
 
 def another_dog(request): # renders form inside logged in session to add a dog if user has not added one yet, or to add another dog
-    return render(request, 'more_dog.html')
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    context = {
+        'dogs': Dog.objects.all(),
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'more_dog.html', context)
+
+def process_dog_add(request):
+    form = request.POST
+    errors_returned = Dog.objects.dog_validator(form) 
+    if len(errors_returned) > 0:
+        request.session['dog_error'] = True
+        for single_error in errors_returned.values():
+            messages.error(request, single_error)
+        return redirect('/add_dog')
+    if request.method == 'POST':
+        photo = request.FILES['image']
+        current_user=User.objects.get(id=request.session['user_id'])
+        new_dog = Dog.objects.create(dog_name=form['dog_name'], age=form['age'], breed=form['breed'], city=form['city'],  state=form['state'], zipcode=form['zipcode'], description=form['description'], user=User.objects.get(id=request.session['user_id']), photo=photo)
+    return redirect(f'/dog_profile/{current_user.id}') 
 
 def account_settings(request): # renders page for user to be able to edit their account info
-    return render(request, 'account_settings.html')
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    context = {
+        'dogs': Dog.objects.all(),
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'account_settings.html', context)
 
 def logout(request): # logs user out of session and redirects to login page
     request.session.clear()

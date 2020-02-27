@@ -17,6 +17,7 @@
   <body>
     <div id="container">
       <!--HEADER START-->
+
       <div>
         <header id="header">
           <div>
@@ -35,7 +36,9 @@
                     <a class="nav-link" href="/dashboard">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dog_profile">Dog Profile</a>
+                    <a class="nav-link" href="/dog_profile/{{current_user.id}}"
+                      >Dog Profile</a
+                    >
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/match"
@@ -51,6 +54,12 @@
                 id="navbarSupportedContent"
               >
                 <ul class="navbar-nav mr-auto">
+                  <li>
+                    <a class="nav-link">Hello, {{ current_user.first_name }}</a>
+                  </li>
+                  <li>
+                    <a class="nav-link">|</a>
+                  </li>
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
@@ -98,7 +107,12 @@
 
         <!--ADD DOG-->
         <div id="form_panel">
-          <form action="/process_dog" method="POST">
+          <form
+            action="/process_dog_add"
+            method="POST"
+            enctype="multipart/form-data"
+          >
+            {% csrf_token %}
             <div>
               <input
                 type="text"
@@ -178,25 +192,28 @@
                 ><span>Tell us more about your dog</span></label
               >
               <div class="form-group">
-                <input
-                  type="file"
-                  class="form-control-file"
-                  id="choose_file"
-                  name="image"
-                />
                 <label for="exampleFormControlFile1" id="photolabel"
                   >Upload a photo of your dog</label
                 >
+                <input
+                  type="file"
+                  class="form-control-file"
+                  id="exampleFormControlFile1"
+                  name="image"
+                />
               </div>
+              {%for message in messages%}
+              <p id="errormsg">{{ message }}</p>
+              {%endfor%}
             </div>
-            <button class="btn btn-warning" id="add_btn">Add dog</button>
+            <button class="btn btn-warning" type="submit">Add dog</button>
           </form>
         </div>
       </div>
       <!--ADD DOG-->
 
       <!--AD START-->
-      <img id="ad" src="{% static 'img/match_ad.jpg'%}" />
+      <a href="/match" id="ad"><img src="{% static 'img/match_ad.jpg'%}"/></a>
       <!--AD END-->
 
       <!--FOOTER-->
@@ -204,7 +221,9 @@
         <div class="column">
           <h6>Menu</h6>
           <a class="links" href="/dashboard">Home</a>
-          <a class="links" href="/dog_profile">Dog Profile</a>
+          <a class="links" href="/dog_profile/{{current_user.id}}"
+            >Dog Profile</a
+          >
           <a class="links" href="/match">Match Pup</a>
         </div>
         <div class="column">
@@ -232,6 +251,7 @@
           </p>
         </div>
       </div>
+
       <div id="social_media">
         <a class="social_links" href="https://www.facebook.com/WeRateDogs/">
           <img class="social" src="{% static 'img/fb-icon.png' %}" />

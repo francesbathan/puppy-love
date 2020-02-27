@@ -17,6 +17,7 @@
   <body>
     <div id="container">
       <!--HEADER START-->
+
       <div>
         <header id="header">
           <div>
@@ -35,7 +36,9 @@
                     <a class="nav-link" href="/dashboard">Home</a>
                   </li>
                   <li class="nav-item">
-                    <a class="nav-link" href="/dog_profile">Dog Profile</a>
+                    <a class="nav-link" href="/dog_profile/{{current_user.id}}"
+                      >Dog Profile</a
+                    >
                   </li>
                   <li class="nav-item">
                     <a class="nav-link" href="/match"
@@ -51,6 +54,12 @@
                 id="navbarSupportedContent"
               >
                 <ul class="navbar-nav mr-auto">
+                  <li>
+                    <a class="nav-link">Hello, {{ current_user.first_name }}</a>
+                  </li>
+                  <li>
+                    <a class="nav-link">|</a>
+                  </li>
                   <li class="nav-item dropdown">
                     <a
                       class="nav-link dropdown-toggle"
@@ -126,81 +135,83 @@
           <img id="dog" src="{% static 'img/dogs.png' %}"
         </div>
       </div>
-      <!--HOW END-->
-
-      <!--FOOTER-->
-      <div id="footer">
-        <div class="column">
-          <h6>Menu</h6>
-          <a class="links" href="/dashboard">Home</a>
-          <a class="links" href="/dog_profile">Dog Profile</a>
-          <a class="links" href="/match">Match Pup</a>
-        </div>
-        <div class="column">
-          <h6>Account</h6>
-          <a class="links" href="/account_settings">Account Settings</a>
-          <a class="links" href="/how">How It Works</a>
-          <a class="links" href="/contact">Contact Us</a>
-        </div>
-        <div class="column">
-          <h6>Contact</h6>
-          <p class="footer_text">
-            175 E Olive Ave<br />
-            Burbank CA 91502<br />
-            +1 844 446 3656
-          </p>
-        </div>
-
-        <div class="column">
-          <h6>About Us</h6>
-          <p class="footer_text" id="about">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            laborum numquam? Nulla excepturi reprehenderit perspiciatis
-            deleniti, tempore facere hic quidem beatae cupiditate ut, quibusdam
-            enim, quas non porro voluptatum quam.
-          </p>
-        </div>
-      </div>
-      <div id="social_media">
-        <a class="social_links" href="https://www.facebook.com/WeRateDogs/">
-          <img class="social" src="{% static 'img/fb-icon.png' %}" />
-        </a>
-        <a
-          class="social_links"
-          href="https://www.instagram.com/weratedogs/?hl=en"
-        >
-          <img class="social" src="{% static 'img/ig-icon.png' %}" />
-        </a>
-        <a
-          class="social_links"
-          href="https://twitter.com/dog_rates?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
-        >
-          <img class="social" src="{% static 'img/tw-icon.png' %}" />
-        </a>
-        <a
-          class="social_links"
-          href="https://github.com/francesbathan/puppy-love"
-        >
-          <img class="social" src="{% static 'img/git-icon.png' %}" />
-        </a>
-        <p id="copyright">© A Django Project. 2020. All Rights Reserved.</p>
-      </div>
-      <script src="{% static 'js/dashboard_scripts.js' %}"></script>
-      <script
-        src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
-        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
-        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
-        crossorigin="anonymous"
-      ></script>
-      <script
-        src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
-        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
-        crossorigin="anonymous"
-      ></script>
     </div>
+
+    <!--HOW END-->
+
+    <!--FOOTER-->
+    <div id="footer">
+      <div class="column">
+        <h6>Menu</h6>
+        <a class="links" href="/dashboard">Home</a>
+        <a class="links" href="/dog_profile/{{current_user.id}}">Dog Profile</a>
+        <a class="links" href="/match">Match Pup</a>
+      </div>
+      <div class="column">
+        <h6>Account</h6>
+        <a class="links" href="/account_settings">Account Settings</a>
+        <a class="links" href="/how">How It Works</a>
+        <a class="links" href="/contact">Contact Us</a>
+      </div>
+      <div class="column">
+        <h6>Contact</h6>
+        <p class="footer_text">
+          175 E Olive Ave<br />
+          Burbank CA 91502<br />
+          +1 844 446 3656
+        </p>
+      </div>
+
+      <div class="column">
+        <h6>About Us</h6>
+        <p class="footer_text" id="about">
+          Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
+          laborum numquam? Nulla excepturi reprehenderit perspiciatis deleniti,
+          tempore facere hic quidem beatae cupiditate ut, quibusdam enim, quas
+          non porro voluptatum quam.
+        </p>
+      </div>
+    </div>
+
+    <div id="social_media">
+      <a class="social_links" href="https://www.facebook.com/WeRateDogs/">
+        <img class="social" src="{% static 'img/fb-icon.png' %}" />
+      </a>
+      <a
+        class="social_links"
+        href="https://www.instagram.com/weratedogs/?hl=en"
+      >
+        <img class="social" src="{% static 'img/ig-icon.png' %}" />
+      </a>
+      <a
+        class="social_links"
+        href="https://twitter.com/dog_rates?ref_src=twsrc%5Egoogle%7Ctwcamp%5Eserp%7Ctwgr%5Eauthor"
+      >
+        <img class="social" src="{% static 'img/tw-icon.png' %}" />
+      </a>
+      <a
+        class="social_links"
+        href="https://github.com/francesbathan/puppy-love"
+      >
+        <img class="social" src="{% static 'img/git-icon.png' %}" />
+      </a>
+      <p id="copyright">© A Django Project. 2020. All Rights Reserved.</p>
+    </div>
+    <script src="{% static 'js/dashboard_scripts.js' %}"></script>
+    <script
+      src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+      integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+      integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+      integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>
