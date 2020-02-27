@@ -103,7 +103,12 @@
 
         <!--EDIT DOG-->
         <div id="form_panel">
-          <form action="/process_registration" method="POST" class="form-group">
+          <form
+            action="/process_account/{{ current_user.id }}"
+            method="POST"
+            class="form-group"
+          >
+            {% csrf_token %}
             <div>
               <input
                 type="text"
@@ -112,6 +117,7 @@
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_user.first_name }}"
               />
               <label for="first_name"><span>First Name</span></label>
             </div>
@@ -123,6 +129,7 @@
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_user.last_name }}"
               />
               <label for="last_name"><span>Last Name</span></label>
             </div>
@@ -134,6 +141,7 @@
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_user.username }}"
               />
               <label for="username"><span>Username</span></label>
             </div>
@@ -145,6 +153,7 @@
                 id="nme"
                 required
                 autocomplete="off"
+                value="{{ current_user.email }}"
               />
               <label for="email"><span>Email</span></label>
             </div>

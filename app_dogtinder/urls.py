@@ -21,5 +21,6 @@ urlpatterns = [
     path('add_another_dog', views.another_dog), #add another dog/add a dog if initial form was not filled out
     path('process_dog_add', views.process_dog_add), #processes dog from inside logged in session
     path('account_settings', views.account_settings), #user's account settings
+    path('process_account/<int:id>', views.process_account), #processes edit account
     path('logout', views.logout), #logout button
 ]

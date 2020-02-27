@@ -11,7 +11,6 @@ def login(request): # renders login page
 
 def process_login(request): #processes login page + validation
     form = request.POST
-    print("hello")
     login_errors = User.objects.login_validator(form)
     if len(login_errors) > 0:
         request.session['login_error'] = False
@@ -170,6 +169,19 @@ def account_settings(request): # renders page for user to be able to edit their 
         'current_user': User.objects.get(id=request.session['user_id']),
     }
     return render(request, 'account_settings.html', context)
+
+def process_account(request, id):
+    form = request.POST
+    user=User.objects.get(id=id)
+    user.first_name=form['first_name']
+    user.last_name=form['last_name']
+    user.username=form['username']
+    user.email=form['email']
+    hashed_pw = bcrypt.hashpw(form['password'].encode(), bcrypt.gensalt()).decode() 
+    user.password=hashed_pw
+    user.save()
+    return redirect(f'/dashboard')
+
 
 def logout(request): # logs user out of session and redirects to login page
     request.session.clear()
