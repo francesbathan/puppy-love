@@ -122,7 +122,7 @@
             </div>
             <form action="/process_rating" method="POST">
             {%csrf_token%}
-              <div id="value" class="value" href="/process_rating"></div>
+              <div id="value" class="value" href="/process_rating/{{ dog.id }}"></div>
               <!-- <label for="formControlRange">Rate this good dog</label> -->
               <input
                 type="range"
@@ -134,12 +134,12 @@
                 id="myRange"
                 name="rating"
               />
+              <button id="save" class="btn btn-warning" type="submit">
+                Save Rating
+              </button>
           </div>
-                <!-- <button id="save" class="btn btn-warning" href="/process_rating">
-                  Save Rating
-                </button> -->
-                <button type="submit" id="next">></a>
               </form>
+              <button type="submit" id="next">></a>
         </div>
         {% endfor %}
       </div>

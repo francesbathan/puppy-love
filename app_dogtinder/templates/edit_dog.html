@@ -109,7 +109,11 @@
 
         <!--EDIT DOG-->
         <div id="form_panel">
-          <form action="/dog_update/{{current_dog.id}}" method="POST">
+          <form
+            action="/dog_update/{{current_dog.id}}"
+            method="POST"
+            enctype="multipart/form-data"
+          >
             {%csrf_token%}
             <div>
               <input

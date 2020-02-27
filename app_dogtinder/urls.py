@@ -11,7 +11,7 @@ urlpatterns = [
     path('add_dog', views.add_dog), #add a dog form
     path('process_dog', views.process_dog), #processes dog form w/ file upload
     path('dashboard', views.dashboard), #homepage/dashboard
-    path('process_rating', views.process_rating), #processes rating
+    path('process_rating/<int:id>', views.process_rating), #processes rating
     path('dog_profile/<int:id>', views.dog_profile), #current dog's profile
     path('edit/<int:id>', views.edit), #edit dog profile form
     path('dog_update/<int:id>', views.dog_update), #processes edit dog form

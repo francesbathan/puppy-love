@@ -65,17 +65,17 @@ def dashboard(request): # renders dashboard
     }
     return render(request, 'dashboard.html', context)
 
-def process_rating(request): #processes rating for dogs and goes onto the next dog
+def process_rating(request, id): #processes/saves the ratings for the dogs
     form=request.POST
-    print("hello")
-    print(form)
+    # rate_list = []
+    rating = RatingList.objects.create(rating=form['rating'], dog=Dog.objects.get(id=id))
+    # rate_list.append(rating)
     return redirect('/dashboard')
 
 def dog_profile(request, id): # renders dog's profile page
     if 'user_id' not in request.session:
         return redirect('/login')
     context = {
-
         'current_user': User.objects.get(id=request.session['user_id']),
     }
     return render(request, 'profile.html', context)
@@ -98,6 +98,7 @@ def edit(request, id): # renders edit profile for dog
 
 def dog_update(request, id): #processes the information that went through the form and redirects to the dog profile page
     form = request.POST
+    print("test")
     current_dog=Dog.objects.get(id=id)
     current_dog.dog_name=form['dog_name']
     current_dog.age=form['age']
@@ -106,9 +107,11 @@ def dog_update(request, id): #processes the information that went through the fo
     current_dog.state=form['state']
     current_dog.zipcode=form['zipcode']
     current_dog.description=form['description']
+    if request.FILES.get('image'):
+        current_dog.photo=request.FILES['image']
+    print("request", request.FILES)
+    print(request.FILES)
     current_dog.save()
-    # if current_dog.photo != request.FILES['image']:
-    #     current_dog.photo.save(request.FILES['image'])
     return redirect(f'/dog_profile/{current_dog.id}')
 
 def how(request): # renders how it works page
