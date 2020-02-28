@@ -125,7 +125,9 @@
               <p>
                 Overall Rating:
               </p>
-              <h2>15/10</h2>
+              {% for rating in current_dog.ratings.all %}
+              <h2>{{ rating.rating }}/10</h2>
+              {% endfor %}
               <p id="good_dog">
                 (and always a good dog)
               </p>

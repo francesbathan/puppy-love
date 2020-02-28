@@ -1,7 +1,9 @@
 from django.shortcuts import render, redirect
 from .models import *
 from django.contrib import messages
+from django.db.models import Avg
 import bcrypt
+
 
 def index(request): # renders homepage
     return render(request, 'home.html')
@@ -67,14 +69,16 @@ def dashboard(request): # renders dashboard
 
 def process_rating(request, id): #processes/saves the ratings for the dogs
     form=request.POST
-    # rate_list = []
+    rate_list = []
     rating = RatingList.objects.create(rating=form['rating'], dog=Dog.objects.get(id=id))
-    # rate_list.append(rating)
+    rate_list.append(rating)
     return redirect('/dashboard')
 
 def dog_profile(request, id): # renders dog's profile page
     if 'user_id' not in request.session:
         return redirect('/login')
+    # dog = Dog.objects.get(id=id)
+    # rating_avg = Dog.rating.aggregate(Avg('rating')).values()[0]
     context = {
         'current_user': User.objects.get(id=request.session['user_id']),
     }

@@ -1,21 +1,20 @@
-// var elem = document.querySelector('input[type="range"]');
+var slider = document.getElementsByClassName("slider");
+var output = document.getElementsByClassName("output");
 
-// var rangeValue = function() {
-//   var newValue = elem.value;
-//   var target = document.querySelector(".value");
-//   target.innerHTML = newValue;
-// };
+//Update the current slider value (each time you drag the slider handle)
+function render() {
+  for (var i = 0; i < slider.length; i++) {
+    output[i].innerHTML = slider[i].value + "/10"; // Display the default values
+  }
+}
 
-// if (elem) {
-//   console.warn("lilly sez hi");
-//   elem.addEventListener("input", rangeValue);
-// }
+// When pages loads, get values
+render();
 
-var slider = document.getElementById("myRange");
-var output = document.getElementById("value");
-output.innerHTML = slider.value + "/10"; // Display the default slider value
-
-// Update the current slider value (each time you drag the slider handle)
-slider.oninput = function() {
-  output.innerHTML = this.value + "/10";
-};
+// i know its es6, but i couldnt get it to work either way lol
+document.querySelectorAll(".slider").forEach(element => {
+  element.addEventListener("input", event => {
+    event.innerHTML = event.target.value;
+    render();
+  });
+});

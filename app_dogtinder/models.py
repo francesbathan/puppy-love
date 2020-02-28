@@ -3,6 +3,7 @@ import re
 import bcrypt
 
 
+
 class UserManager(models.Manager): #validation for user login/registration
     def register_validator(self, post_data): #validator for registration form
         user_errors = {}

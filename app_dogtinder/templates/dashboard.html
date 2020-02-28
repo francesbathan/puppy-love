@@ -35,9 +35,11 @@
                   <li class="nav-item active">
                     <a class="nav-link" href="/dashboard">Home</a>
                   </li>
-                  
+
                   <li class="nav-item">
-                    <a class="nav-link" href="/dog_profile/{{ current_user.id }}"
+                    <a
+                      class="nav-link"
+                      href="/dog_profile/{{ current_user.id }}"
                       >Dog Profile</a
                     >
                   </li>
@@ -107,7 +109,7 @@
         </div>
         <!-- <h3>RATE DOGS</h3> -->
         {% for dog in dogs %}
-        <div id="rating_panel">
+        <div class="rating_panel" id="{{ dog.id }}">
           <div id="pic_panel">
             <img src="{{ dog.photo.url }}" class="dog_pic" />
           </div>
@@ -120,9 +122,9 @@
                 {{ dog.description }}
               </p>
             </div>
-            <form action="/process_rating" method="POST">
-            {%csrf_token%}
-              <div id="value" class="value" href="/process_rating/{{ dog.id }}"></div>
+            <form action="/process_rating/{{ dog.id }}" method="POST">
+              {%csrf_token%}
+              <div id="output1" class="output"></div>
               <!-- <label for="formControlRange">Rate this good dog</label> -->
               <input
                 type="range"
@@ -130,23 +132,24 @@
                 max="15"
                 step="1"
                 value="11"
-                class="form-control-range"
-                id="myRange"
+                class="form-control-range slider"
+                id="slider1"
                 name="rating"
               />
+
               <button id="save" class="btn btn-warning" type="submit">
                 Save Rating
               </button>
+            </form>
           </div>
-              </form>
-              <button type="submit" id="next">></a>
+          <button type="submit" id="next">></button>
         </div>
         {% endfor %}
       </div>
       <!--RATE END-->
 
       <!--AD START-->
-      <a href="/match" id="ad"><img src="{% static 'img/match_ad.jpg'%}" /></a>
+      <a href="/match" id="ad"><img src="{% static 'img/match_ad.jpg'%}"/></a>
       <!--AD END-->
 
       <!--FOOTER-->`
@@ -154,7 +157,9 @@
         <div class="column">
           <h6>Menu</h6>
           <a class="links" href="/dashboard">Home</a>
-          <a class="links" href="/dog_profile/{{current_user.id}}">Dog Profile</a>
+          <a class="links" href="/dog_profile/{{current_user.id}}"
+            >Dog Profile</a
+          >
           <a class="links" href="/match">Match Pup</a>
         </div>
         <div class="column">
@@ -175,10 +180,9 @@
         <div class="column">
           <h6>About Us</h6>
           <p class="footer_text" id="about">
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam,
-            laborum numquam? Nulla excepturi reprehenderit perspiciatis
-            deleniti, tempore facere hic quidem beatae cupiditate ut, quibusdam
-            enim, quas non porro voluptatum quam.
+            Hello friends.<br />
+            Hope you enjoy all the puppies.<br />
+            Please tell your dogs I said hi.
           </p>
         </div>
       </div>
