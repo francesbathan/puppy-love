@@ -143,7 +143,7 @@
 input[type="range"] {
   display: block;
   -webkit-appearance: none;
-  background-color: #fcd600;
+  background: linear-gradient(to left, #cc7a00 0%, #ffed88 50%);
   width: 300px;
   height: 5px;
   border-radius: 5px;
@@ -152,7 +152,7 @@ input[type="range"] {
 }
 input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
-  background-color: #ff5e00;
+  background-color:#cc7a00;
   width: 30px;
   height: 30px;
   border-radius: 50%;
@@ -183,6 +183,16 @@ input[type="range"]::-webkit-slider-thumb:active {
   font-size: 10pt;
   margin: 5% auto;
   display: block;
+}
+.nextbtn {
+  text-decoration: none !important;
+  color: lightgray !important;
+}
+.nextbtn:hover {
+  text-decoration: none !important;
+  background: -webkit-linear-gradient(rgb(155, 83, 0), rgb(255, 194, 101));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
 }
 /*rate end*/
 

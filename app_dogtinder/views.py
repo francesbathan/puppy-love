@@ -65,10 +65,25 @@ def dashboard(request): # renders dashboard
     context = {
         'dogs': Dog.objects.all(),
         'current_user': User.objects.get(id=request.session['user_id']),
-        'total_ratings': len(RatingList.objects.all())
+        'total_ratings': len(RatingList.objects.all()),
+        'next_dog': next_dog
     }
-  
     return render(request, 'dashboard.html', context)
+
+def next_dog(request, id):
+    if 'user_id' not in request.session:
+        return redirect('/login')
+    total_dogs = len(Dog.objects.all())
+    current_dog = Dog.objects.get(id=id)
+    try:
+        next_dog = Dog.get_next_by_created_at(current_dog)
+    except:
+        return redirect('/dashboard')
+    context = {
+        'dog': next_dog,
+        'current_user': User.objects.get(id=request.session['user_id']),
+    }
+    return render(request, 'next_dog.html', context)
 
 def process_rating(request, id): #processes/saves the ratings for the dogs
     form=request.POST
@@ -83,10 +98,10 @@ def dog_profile(request, id): # renders dog's profile page
     total_ratings = {}
     current_user = User.objects.get(id=request.session['user_id'])
     for dog in current_user.dogs.all():
-        total = 0
+        total = 1
         for rating in dog.ratings.all():
             total += rating.rating
-        total_ratings[dog.id] = total/len(dog.ratings.all())
+        total_ratings[dog.id] = len(dog.ratings.all())/total
     context = {
         'current_user': current_user,
         'ratings_dict': total_ratings,

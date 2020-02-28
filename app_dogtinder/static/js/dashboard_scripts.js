@@ -25,7 +25,7 @@ document.querySelectorAll(".slider").forEach(element => {
 
 let deck = Array.from(new Array(totalRatings), (x, i) => i);
 
-hand.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);
+// hand.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);
 
 // function stackShuffle(deck) {
 //   let count = deck.length;
