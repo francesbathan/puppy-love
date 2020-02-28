@@ -3,6 +3,7 @@ from .models import *
 from django.contrib import messages
 from django.db.models import Avg
 import bcrypt
+import statistics
 
 
 def index(request): # renders homepage
@@ -64,7 +65,9 @@ def dashboard(request): # renders dashboard
     context = {
         'dogs': Dog.objects.all(),
         'current_user': User.objects.get(id=request.session['user_id']),
+        'total_ratings': len(RatingList.objects.all())
     }
+  
     return render(request, 'dashboard.html', context)
 
 def process_rating(request, id): #processes/saves the ratings for the dogs
@@ -77,10 +80,16 @@ def process_rating(request, id): #processes/saves the ratings for the dogs
 def dog_profile(request, id): # renders dog's profile page
     if 'user_id' not in request.session:
         return redirect('/login')
-    # dog = Dog.objects.get(id=id)
-    # rating_avg = Dog.rating.aggregate(Avg('rating')).values()[0]
+    total_ratings = {}
+    current_user = User.objects.get(id=request.session['user_id'])
+    for dog in current_user.dogs.all():
+        total = 0
+        for rating in dog.ratings.all():
+            total += rating.rating
+        total_ratings[dog.id] = total/len(dog.ratings.all())
     context = {
-        'current_user': User.objects.get(id=request.session['user_id']),
+        'current_user': current_user,
+        'ratings_dict': total_ratings,
     }
     return render(request, 'profile.html', context)
 

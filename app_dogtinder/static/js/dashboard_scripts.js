@@ -1,3 +1,5 @@
+///////// slider functionality for ratings ////////////
+
 var slider = document.getElementsByClassName("slider");
 var output = document.getElementsByClassName("output");
 
@@ -18,3 +20,19 @@ document.querySelectorAll(".slider").forEach(element => {
     render();
   });
 });
+
+///////// shuffle functionality for dogs ////////////
+
+let deck = Array.from(new Array(totalRatings), (x, i) => i);
+
+hand.push(deck.splice(Math.floor(Math.random() * deck.length), 1)[0]);
+
+// function stackShuffle(deck) {
+//   let count = deck.length;
+//   while (count) {
+//     deck.push(deck.splice(Math.floor(Math.random() * count), 1)[0]);
+//     count -= 1;
+//   }
+// }
+
+// stackShuffle(rating_panel);
